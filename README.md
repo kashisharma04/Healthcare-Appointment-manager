@@ -49,7 +49,7 @@ To set up and run this project locally, follow these steps:
 ## Contact
 If you have any questions or need assistance, feel free to contact us at [kashisharmaujjn@gmail.com].
 
-Thank you for exploring Blog project. I hope it empowers you to gain valuable insights from your data!
+Thank you for exploring Healthcare project. I hope it empowers you to gain valuable insights from your data!
 
 ---
 
