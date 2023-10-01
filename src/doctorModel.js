@@ -9,6 +9,9 @@ const doctorSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  experience : {
+    type : String
+  },
   weeklyAvailability: {
     type: [String], // Array of weekdays (e.g., ['Monday', 'Tuesday'])
     required: true,
@@ -17,12 +20,6 @@ const doctorSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  appointments: [
-    {
-      date: Date,
-      patientName: String,
-    },
-  ],
 });
 
 module.exports = mongoose.model('Doctor', doctorSchema);
