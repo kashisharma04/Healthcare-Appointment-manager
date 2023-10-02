@@ -4,6 +4,7 @@
   "description": "Welcome to the Healthcare Appointment System API repository! This project implements API endpoints for managing appointments with doctors who follow a weekly schedule.",
   "main": "index.js",
   "scripts": {
+    "start" : "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
