@@ -2,8 +2,7 @@
 
 Welcome to the Healthcare Appointment System API repository! This project implements API endpoints for managing appointments with doctors who follow a weekly schedule.
 
-Deploy Link :- https://visual-project.onrender.com/
-
+Deploy Link :- https://appointment-new.onrender.com/
 ## Project Overview
 In this system, doctors practice on a weekly schedule with the following constraints:
 - They practice at one location.
