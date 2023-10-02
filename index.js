@@ -1,5 +1,5 @@
 const express = require('express')
-const route = require('../Healthcare-Appointment-manager/src/route');
+const route = require('./src/route');
 const mongoose= require('mongoose')
 
 require('dotenv').config()
