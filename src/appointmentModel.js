@@ -10,9 +10,13 @@ const appointmentSchema = new mongoose.Schema({
     ref: 'Doctor', // Reference to the Doctor model
     required: true,
   },
+  mobile :{
+    type : String,
+    required : true,
+  },
   status: {
     type: String,
-    enum: ['Scheduled', 'Canceled', 'Completed'], // Appointment status options
+    enum: ['Scheduled', 'Canceled', 'Completed','Pending'], // Appointment status options
     default: 'Pending', // Default status is Pending
   },
 });

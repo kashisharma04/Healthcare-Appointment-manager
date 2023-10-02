@@ -13,6 +13,9 @@ const createDoctor = async function(req,res){
 
     let doctor = await doctorModel.create(DoctorData)
 
+    let checkData = await doctorModel.find({ name, specialization })
+    if(checkData.length > 0) {return res.status(200).send(`The Doctor is already registered.`)}
+    //console.log(checkData.name)
     res.status(201).send({ status :true, message: 'Doctor created successfully', doctor });
 }
     catch(error){

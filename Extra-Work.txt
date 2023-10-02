@@ -1,0 +1,75 @@
+//======================verify Patient======================
+require('dotenv').config();
+const {accountSID, authToken, twilioPhone}=process.env
+
+
+const client = new twilio(accountSID, authToken)
+
+let otpGenerate = async (req,res)=>{
+    try{
+    let data = req.body;
+    let {patientName , mobile} = data;
+    if(!patientName || !mobile){ return res.status(400).send({message : 'Please provide mandatory details'})}
+
+    let checkData = await appointmentModel.find({patientName , mobile})
+    if(!checkData){ return res.status(400).send("Unregistered !!")}
+
+    const otp = Math.floor(100000 + Math.random() * 900000);
+        //store otp and expiration time in the database
+        const otpExp = new Date();
+        otpExp.setMinutes(otpExp.getMinutes() + 3);
+
+        const registeredUser = new Register({
+            name,
+            phone,
+            OTP: otp,
+            otpExp: otpExp
+        });
+        await registeredUser.save();
+
+        //send OTP to the user's phone number using twilio
+        await client.messages.create({
+            body: `The new OTP for your registration is : ${otp}`,
+            from: twilioPhone,
+            to: phone
+        });
+        return res.status(201).send({ status: true, message: "OTP has been sent successfully" })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).send({ status: false, message: "Internal Server Error" });
+    }
+}
+
+const verifyUser=async (req,res)=>{
+    try {
+       const {mobile,otp}=req.body;
+   
+       const user= await Register.findOne({phone});
+       
+       if(!user){
+           return res.status(404).send({error:"User Not Found"});
+       }
+   
+       if(user.OTP !== otp){
+           return res.status(400).send({error:"Invalid OTP"})
+       }
+   
+   const now = new Date();
+   if(now > user.otpExp){
+       return res.status(400).send({error:"OTP has expired"})
+   }
+   
+   //if OTP is valid,then mark the user as verified true
+   user.isVerified=true;
+   await user.save();
+   
+   return res.status(200).send({message:"OTP is verified"})
+       
+    } catch (error) {
+       
+       console.log(error);
+       return res.status(500).send({error:`${error.message} =Internal Server Error Probably`})
+    }
+   }
+   
+   module.exports=verifyUser;
