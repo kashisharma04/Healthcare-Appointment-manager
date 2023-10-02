@@ -1,4 +1,4 @@
-# Healthcare-Appointment-manager
+# Healthcare-Appointment-Manager
 
 Welcome to the Healthcare Appointment System API repository! This project implements API endpoints for managing appointments with doctors who follow a weekly schedule.
 
@@ -19,17 +19,17 @@ The API provides the following functionality:
 
 ## API Endpoints
 ### 1. Doctor Listing
-- **Endpoint:** `/api/doctors`
+- **Endpoint:** `/doctor/get`
 - **HTTP Method:** GET
 - **Description:** Retrieve a list of all doctors.
 
 ### 2. Doctor Detail Page
-- **Endpoint:** `/api/doctors/:doctorId`
+- **Endpoint:** `/doctor/getid`
 - **HTTP Method:** GET
 - **Description:** View detailed information about a specific doctor.
 
 ### 3. Appointment Booking
-- **Endpoint:** `/api/doctors/:doctorId/book-appointment`
+- **Endpoint:** `/appointment/book`
 - **HTTP Method:** POST
 - **Description:** Book an appointment with a doctor. Ensure that the appointment adheres to the doctor's availability and maximum patient limit.
 
@@ -37,9 +37,8 @@ The API provides the following functionality:
 To set up and run this project locally, follow these steps:
 
 1. Clone this repository: `git clone https://github.com/kashisharma04/Healthcare-Appointment-manager.git`
-
 2. Install dependencies:`npm install`
-3. Start the Node.js server: `node server.js`
+3. Start the Node.js server: `npm start`
 
 ## Usage
 - Make API requests to the specified endpoints using tools like Postman or cURL.
